@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <head>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	 crossorigin="anonymous">
+	</script>
+	<script type="text/javascript" src="scripts.js">
+	</script>
+	<link rel="stylesheet" href="style.css">
+</head>
+    <center> 
+      <h1> Digital Store List </h1> 
+    </center>
+  </head>
+  <body>
+<!-- HTML -->
+  <p id="listItem"> Use this so you can remember what to get at any store!
+    <br> <u> Items: </u> 
+     </p>
+    <center> <input id="txt1" placeholder="Type in item name"> 
+    <button id="addBtn"> Add item </button> </center>
+    
+<!-- Javascript and jQuery -->
+  <script>
+
+$(document).ready(function(){
+      // Adding list item 
+      $("#addBtn").click(function(){   
+        var str = $("#txt1").val();
+        $("#listItem").append('<span><br><input type="checkbox">' + str + ' <button class="btn2"> Delete </button></span>');
+        //After entering, text box empties
+        $("#txt1").val("");
+
+      // Completing list item, strikethrough code from @drneel on Stack Overflow
+      $("input:checkbox").click(function(){
+        var $this = $(this);
+        if (this.checked) {
+            $this.parent().addClass('completed');
+          } else {
+            $this.parent().removeClass('completed');
+          }
+        });
+
+      //Deleting list item
+      $(".btn2").click(function(){
+          var $this = $(this);
+          $this.parent().remove();
+        });
+
+    }); 
+});
+
+</script>
+  </body>
+</html>
